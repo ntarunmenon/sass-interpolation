@@ -1,0 +1,24 @@
+/* Define standard variables and values for website */
+$fontsize: 18px;
+
+$colors: (
+"bgcolor": lightblue,
+"textcolor": darkblue
+);
+
+@function color($key) {
+
+  @if not map-has-key($colors, $key) {
+    @warn "Key `#{$key}` found.";
+  }
+  @return map-get($colors, $key)
+}
+
+
+$sidebar-width: 250px;
+.main {
+  width: calc(100% - #{$sidebar-width});
+  background-color: color(bgcolor);
+  color: color(textcolor);
+  font-size: $fontsize;
+}
